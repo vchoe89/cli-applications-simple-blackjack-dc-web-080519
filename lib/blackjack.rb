@@ -39,13 +39,14 @@ def hit?(card_total)
     card_total
   else
     invalid_command
+    hit?(card_total)
   end
 end
 
 def invalid_command
   puts "Please enter a valid command"
-  prompt_user
-  get_user_input
+  # prompt_user
+  # get_user_input
 end
 
 #####################################################
@@ -53,6 +54,12 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  card_total = initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
+    display_card_total(card_total)
+  end
+  end_game(card_total)
 end
     
